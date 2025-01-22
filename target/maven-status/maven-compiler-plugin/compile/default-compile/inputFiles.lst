@@ -1,0 +1,5 @@
+/home/erick/Documentos/todolist-spring/src/main/java/com/example/todolist/TodolistApplication.java
+/home/erick/Documentos/todolist-spring/src/main/java/com/example/todolist/controller/TaskController.java
+/home/erick/Documentos/todolist-spring/src/main/java/com/example/todolist/model/Task.java
+/home/erick/Documentos/todolist-spring/src/main/java/com/example/todolist/repository/TaskRepository.java
+/home/erick/Documentos/todolist-spring/src/main/java/com/example/todolist/service/TaskService.java
