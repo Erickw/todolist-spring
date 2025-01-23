@@ -33,4 +33,29 @@ public class TaskController {
         taskService.deleteTask(id);
         return "redirect:/tasks";
     }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Optional<Task> task = taskService.findTaskById(id);
+        if (task.isPresent()) {
+            model.addAttribute("task", task.get());
+            return "edit";
+        } else {
+            return "redirect:/tasks";
+        }
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateTask(@PathVariable Long id, @ModelAttribute Task updatedTask) {
+        Optional<Task> task = taskService.findTaskById(id);
+        if (task.isPresent()) {
+            Task existingTask = task.get();
+            existingTask.setTitle(updatedTask.getTitle());
+            existingTask.setDescription(updatedTask.getDescription());
+            existingTask.setDueDate(updatedTask.getDueDate());
+            existingTask.setCompleted(updatedTask.isCompleted());
+            taskService.saveTask(existingTask);
+        }
+        return "redirect:/tasks";
+    }
 }
