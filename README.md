@@ -17,6 +17,9 @@ Antes de executar o projeto, certifique-se de ter instalado:
 
 - **Java JDK 11 ou superior**: [Instalar Java](https://www.oracle.com/java/technologies/javase-downloads.html)
 - **Spring Boot CLI Versão inferior a 3.0**: [Instalar Spring Boot CLI](https://spring.io/tools)
+- **Maven 3.6.0 ou superior**: [Instalar Maven](https://maven.apache.org/install.html)
+  - Necessário para gerenciar dependências e executar o projeto.
+  - O arquivo `pom.xml` inclui o **Spring Boot Maven Plugin** como dependência essencial para construir e executar o projeto.
 
 ## Como executar
 
