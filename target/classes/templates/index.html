@@ -123,6 +123,7 @@
             <li th:each="task : ${tasks}">
                 <span th:text="${task.title}"></span>
                 <span th:text="${task.description}"></span>
+                <span th:text="${task.dueDate}"></span>
                 <a th:href="@{'/tasks/edit/' + ${task.id}}" class="edit">Editar</a>
                 <a th:href="@{'/tasks/delete/' + ${task.id}}" class="delete">Excluir</a>
             </li>
