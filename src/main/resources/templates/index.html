@@ -2,21 +2,121 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>TODO List</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        form input[type="text"],
+        form input[type="date"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fefefe;
+            transition: box-shadow 0.3s ease;
+        }
+
+        ul li:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li span {
+            flex: 1;
+        }
+
+        ul li a {
+            background-color: #f44336;
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li a:hover {
+            background-color: #e53935;
+        }
+    </style>
 </head>
 <body>
-    <h1>TODO List</h1>
-    <form action="/tasks" method="post">
-        <input type="text" name="title" placeholder="Title" required />
-        <input type="text" name="description" placeholder="Description" />
-        <input type="date" name="dueDate" />
-        <button type="submit">Add Task</button>
-    </form>
-    <ul>
-        <li th:each="task : ${tasks}">
-            <span th:text="${task.title}"></span> -
-            <span th:text="${task.description}"></span>
-            <a th:href="@{'/tasks/delete/' + ${task.id}}">Delete</a>
-        </li>
-    </ul>
+    <header>
+        TODO List
+    </header>
+    <div class="container">
+        <form action="/tasks" method="post">
+            <input type="text" name="title" placeholder="Título da tarefa" required />
+            <input type="text" name="description" placeholder="Descrição (opcional)" />
+            <input type="date" name="dueDate" />
+            <button type="submit">Adicionar Tarefa</button>
+        </form>
+        <ul>
+            <li th:each="task : ${tasks}">
+                <span th:text="${task.title}"></span>
+                <span th:text="${task.description}"></span>
+                <a th:href="@{'/tasks/delete/' + ${task.id}}">Excluir</a>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
